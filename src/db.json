@@ -1,0 +1,34 @@
+[
+        {
+            "id" :1,
+            "title":"Lịch làm việc",
+            "date":"2020-09-17",
+            "content":"Thứ 2: Đi làm tại Fabi. Thứ 3: đi làm. Thứ 4 :Đi làm luôn"
+
+
+        },
+        {
+            "id" :2,
+            "title":"Địa chỉ nhà",
+            "date":"2020-09-17",
+            "content":"Xóm 6- Châu Sơn- Ba Vì - Hà Nội"
+
+
+        },
+        {
+            "id" :3,
+            "title":"Tiền lương",
+            "date":"2020-09-17",
+            "content":"Chưa có"
+
+
+        },
+        {
+            "id" :4,
+            "title":"Tiền nhà",
+            "date":"2020-09-17",
+            "content":"Tiền nhà tháng này đã đóng. Chuẩn bị tiền tháng sau."
+
+
+        }
+    ]

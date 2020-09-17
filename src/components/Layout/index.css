@@ -1,0 +1,69 @@
+.container{
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding:0 15px;
+}
+.header .col-sm-1{
+    background: #9162bb;
+    margin-left: 15px;
+}
+.header .col-sm-4{
+    background:#100e4f;
+    color: #ffffff;
+    font-size: 40px;
+    
+    font-weight: 550;
+   
+}
+.banner{
+    min-height: 200px;
+}
+.form-search input{
+    border: 2.5px solid #000000;
+}
+.form-search  button{
+    font-size: 20px;
+    width: 100%;
+    height: 70.4%;
+    font-weight: 700;
+    padding: 0;
+}
+.list-notebooks{
+  
+}
+.list-notebooks .row{
+    margin: 0;
+   
+}
+.list-notebooks .row h3{
+    font-weight: 600;
+ 
+   
+}
+.list-notebooks .list-group{
+    width: 100%;
+   
+}
+.list-notebooks .list-group-item{
+    background: #1f72ef;
+    margin: 10px 0;
+    color: #ffffff;
+    
+}
+.col-sm-6 h1{
+    color:#100e4f ;
+    font-size: 35px;
+    font-weight: 550;
+}
+.list-notebooks .list-group-item.active{
+    background: red;
+}
+.icon-add-notes{
+   background: none;
+   border: none;
+    float: right;
+}
+
