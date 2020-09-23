@@ -1,5 +1,6 @@
 .container{
     font-family:Arial, Helvetica, sans-serif;
+  
 }
 .header{
   margin-top: 10px;
@@ -19,7 +20,7 @@
    
 }
 .banner{
-    min-height: 200px;
+    min-height: 100px;
 }
 .form-search input{
     border: 2.5px solid #000000;

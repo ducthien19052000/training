@@ -17,3 +17,43 @@ ul > li:first-child{
 .text-content{
    height: 250px;
 }
+.notes-span{
+    line-height: 2.5;
+    background: #100e4f;
+}
+.item-notebook{
+   
+    margin: 30px;
+  background-color: #FFA8B3;
+    
+}
+.card-body{
+    padding-bottom: 0px;
+}
+.item-content{
+    white-space: nowrap; 
+    overflow: hidden;
+    height:100px ;
+    text-overflow: ellipsis; 
+}
+.add-notebook{
+    background: none;
+    border: none;
+     
+}
+.search-item-note{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.errors{
+    margin-left: 30px;
+    color: red;
+}
+.date-item{
+    font-size: 12px;
+    float:right;
+    margin: 0px;
+}
+.item-detail{
+    display: block;
+}

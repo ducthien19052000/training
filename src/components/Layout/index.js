@@ -4,37 +4,36 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import { BsFileEarmarkPlus } from "react-icons/bs";
 import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from 'react-hook-form';
 
 
 const Layout = ({children,noteBooks,showContent,onAdd}) => {
   const [lgShow, setLgShow] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState({});
-  const array = String
+  const { register, handleSubmit, errors } = useForm();
+  const [search, setSearch] = useState("");
 
+  
   const onHandleClick =(id)=>{
     showContent(id)
+    console.log(search)
   }
-  const onHandleChange = e => {
-    const { name, value } = e.target;
-
-    console.log(array)
-
-    setCurrentProduct({
-        ...currentProduct,
-        [name]: value
-    })
+  const n = noteBooks.map(nb=>nb);
   
+  const cateNote = n.filter(note =>
+  note.title.toLowerCase().includes(search.toLowerCase())
+  )
+  
+
+
+  const onHandleAdd=(data)=>{
    
-}
-  const onHandleAdd=(e)=>{
-    e.preventDefault();
     setLgShow(false)
 
-    onAdd({ id: Math.random().toString(36).substr(2, 9),...currentProduct});
+    onAdd({ id: Math.random().toString(36).substr(2, 9),...data});
   }
     return (
       <>
-        <Container>
+        <Container fluid="md">
           <Row  className="header">
           
            <Col sm={1}></Col>
@@ -48,13 +47,10 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
               <Row className="form-search">
                 <Col sm={7}>
                   <Form.Group>
-                    <Form.Control type="email" placeholder="Enter key" />
+                    <Form.Control type="text" placeholder="Enter key" name="search" onChange={e=>setSearch(e.target.value)}/>
                   </Form.Group>  
                 </Col>
                 <Col sm={5}>
-                <Button variant="primary" type="submit">
-                  Search
-                </Button>
               
                 </Col>
               </Row>
@@ -70,7 +66,7 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
                   </Row>
                   <Row >
                   <ListGroup>
-                    {noteBooks.map((nb,index)=>(
+                    {cateNote.map((nb,index)=>(
                           <ListGroup.Item key={index} onClick={()=>onHandleClick(nb.id)}>
                            {nb.title}
                           </ListGroup.Item>
@@ -96,25 +92,19 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-            Large Modal
+            ADD CATEGORY NOTEBOOK
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form onSubmit={onHandleAdd}>
+        <Form onSubmit={handleSubmit(onHandleAdd)}>
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="title"name="title" placeholder="Title"  onChange={onHandleChange}/>
+              {errors.title&& <span className="errors">Vui lòng điền tille</span>}
+              <Form.Control type="title"name="title" placeholder="Title" ref={register({required:true})}/>
             </Form.Group>
             
-            <Form.Group controlId="exampleForm.ControlSelect2">
-              <Form.Label>Date</Form.Label><br/>
-              <Form.Control type="date" name="date" placeholder="Title"  onChange={onHandleChange}/>
-            
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Content</Form.Label>
-              <Form.Control as="textarea" name="content" rows={3}   onChange={onHandleChange}/>
-            </Form.Group>
+           
+          
             <Button variant="primary" type="submit">Save </Button>
           </Form>
       
