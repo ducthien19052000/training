@@ -60,11 +60,10 @@ const Home = props => {
     }
     
     const onHandleEditCate = (data) =>{
-        console.log(data)
         const newNote= cateNoteBook.map(cate =>cate.id ===data.id?data:cate);
-        console.log(newNote)
+
         setCateNoteBook(newNote)
-        console.log(cateNoteBook)
+       
     }
     
     const onHandleShow =(id)=>{
