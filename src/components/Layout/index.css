@@ -67,4 +67,11 @@
    border: none;
     float: right;
 }
-
+.list-group-item button{
+    background: none;
+    border: none;
+}
+.title-cate{
+    width: 72%;
+    text-align: left;
+}

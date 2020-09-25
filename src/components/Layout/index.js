@@ -3,33 +3,70 @@ import { Container , Row , Col, Form, Button, ListGroup, Modal } from 'react-boo
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import { BsFileEarmarkPlus } from "react-icons/bs";
+import { FaRegTrashAlt,FaRegEdit } from "react-icons/fa";
+
 import "react-datepicker/dist/react-datepicker.css";
-import { useForm } from 'react-hook-form';
 
 
-const Layout = ({children,noteBooks,showContent,onAdd}) => {
-  const [lgShow, setLgShow] = useState(false);
-  const { register, handleSubmit, errors } = useForm();
+
+const Layout = ({children,noteBooks,showContent,onAdd,onRemove,onEdit}) => {
+  const [lgShowAdd, setLgShowAdd] = useState(false);
+  const [lgShowEdit, setLgShowEdit] = useState(false);
   const [search, setSearch] = useState("");
+  const [validated, setValidated] = useState(false);
+  const [newCateNoteBook,setNewCateNoteBook] = useState({});
+  const [cateEdit,setCateEdit] =useState({})
 
-  
   const onHandleClick =(id)=>{
     showContent(id)
-    console.log(search)
   }
-  const n = noteBooks.map(nb=>nb);
-  
-  const cateNote = n.filter(note =>
+
+  const onHandleChange =(e)=>{
+    const {name}=e.target;
+    setNewCateNoteBook({...newCateNoteBook,[name]: e.target.value}) 
+}
+  const onHandleChangeEdit = ( e )=>{
+    const {name}=e.target;
+    
+    setCateEdit({...cateEdit,[name]: e.target.value}) 
+  }
+  const cateNote = noteBooks.filter(note =>
   note.title.toLowerCase().includes(search.toLowerCase())
   )
   
 
 
-  const onHandleAdd=(data)=>{
-   
-    setLgShow(false)
+  const onHandleAdd=(e)=>{
+    const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        else{
+          e.preventDefault();
+          setValidated(true);
+          setLgShowAdd(false)
 
-    onAdd({ id: Math.random().toString(36).substr(2, 9),...data});
+          onAdd({ id: Math.random().toString(36).substr(2, 9),...newCateNoteBook});
+        }
+  }
+  
+  const onHandleRemove=(id) =>{
+    onRemove(id)
+  }
+  
+  const onHandleShowEdit = (id) =>{
+    const data = noteBooks.filter(note =>note.id===id);
+    setCateEdit(data[0])
+    setLgShowEdit(true)
+  }
+
+  const onHandleEdit=(e) =>{
+    e.preventDefault()
+    
+    onEdit(cateEdit)
+    setLgShowEdit(false);
+
   }
     return (
       <>
@@ -58,7 +95,7 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
                 <Col className="list-notebooks">
                   <Row>
                   <h3 style={{width: '87%'}}>All Notes</h3>
-                    <button className="icon-add-notes"  onClick={() => setLgShow(true)}>
+                    <button className="icon-add-notes"  onClick={() => setLgShowAdd(true)}>
                       <BsFileEarmarkPlus size="2em" />
                     </button>
                    
@@ -67,9 +104,14 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
                   <Row >
                   <ListGroup>
                     {cateNote.map((nb,index)=>(
-                          <ListGroup.Item key={index} onClick={()=>onHandleClick(nb.id)}>
-                           {nb.title}
+                  
+                          <ListGroup.Item key={index}>
+                            <Button  onClick={()=>onHandleClick(nb.id)} className="title-cate">{nb.title}</Button>
+                           <Button onClick={()=>onHandleRemove(nb.id)}><FaRegTrashAlt/></Button>
+                          <Button onClick={() => onHandleShowEdit(nb.id)}> <FaRegEdit/></Button>
                           </ListGroup.Item>
+                           
+                        
                     ))}
                       </ListGroup>
                   
@@ -86,8 +128,8 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
           </Row>
           <Modal
         size="lg"
-        show={lgShow}
-        onHide={() => setLgShow(false)}
+        show={lgShowAdd}
+        onHide={() => setLgShowAdd(false)}
         aria-labelledby="example-modal-sizes-title-lg"
       >
         <Modal.Header closeButton>
@@ -96,11 +138,11 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form onSubmit={handleSubmit(onHandleAdd)}>
+        <Form  noValidate validated={validated} onSubmit={onHandleAdd}>
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
-              {errors.title&& <span className="errors">Vui lòng điền tille</span>}
-              <Form.Control type="title"name="title" placeholder="Title" ref={register({required:true})}/>
+              
+              <Form.Control type="title"name="title" placeholder="Title" required onChange={onHandleChange}/>
             </Form.Group>
             
            
@@ -110,7 +152,36 @@ const Layout = ({children,noteBooks,showContent,onAdd}) => {
       
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="secondary" onClick={()=>setLgShow(false)}>Close</Button>
+        <Button variant="secondary" onClick={()=>setLgShowAdd(false)}>Close</Button>
+        
+      </Modal.Footer>
+      </Modal>
+      <Modal
+        size="lg"
+        show={lgShowEdit}
+        onHide={() => setLgShowEdit(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            EDIT CATEGORY NOTEBOOK
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form  noValidate validated={validated} onSubmit={onHandleEdit}>
+            <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Label>Title</Form.Label>
+              
+              <Form.Control type="text"name="title" placeholder="Title" value={cateEdit.title}  onChange={onHandleChangeEdit}/>
+            </Form.Group>
+            
+          
+            <Button variant="primary" type="submit">Save </Button>
+          </Form>
+      
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant="secondary" onClick={()=>setLgShowEdit(false)}>Close</Button>
         
       </Modal.Footer>
       </Modal>

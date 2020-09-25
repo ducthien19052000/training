@@ -25,89 +25,91 @@
         }
 
     ],
+  
     "note-books":[
         {
             "id":1,
             "title":"Thứ 2",
-            "content":" đi làm ",
-            "date":"9-2-1020",
+            "content":" 8h-12h : Dến Fabbi làm việc \n 12h-13h30: Nghỉ trưa \n 13h30-17h30: Tiếp tục làm việc ca chiều \n 17h30-23h: Về nhà nghỉ ngơi ăn uống đi ngủ",
+            "date":"9-4-2020",
             "cateId":1
         },
         {
             "id":2,
             "title":"Thứ 3",
-            "content":" đi làm ",
-            "date":"9/2/1020",
+            "content":" 8h-12h : Dến Fabbi làm việc \n 12h-13h30: Nghỉ trưa \n 13h30-17h30: Tiếp tục làm việc ca chiều \n 17h30-23h: Về nhà nghỉ ngơi ăn uống đi ngủ",
+            "date":"9-2-1020",
             "cateId":1
         },
         {
             "id":3,
             "title":"Thứ 4",
-            "content":" đi chơi ",
-            "date":"9-3-2020",
+            "content":" 8h-12h : Dến Fabbi làm việc \n 12h-13h30: Nghỉ trưa \n 13h30-17h30: Tiếp tục làm việc ca chiều \n 17h30-23h: Về nhà nghỉ ngơi ăn uống đi ngủ",
+            "date":"9/3/2020",
             "cateId":1
         },
         {
             "id":4,
             "title":"Nợ sếp",
-            "content":"22/9/2020: 10tr  ",
-            "date":"9-2-2020",
+            "content":"22/9/2020: 10tr \n 1/10/2020: Vay thêm sếp 20 triệu  \n 15/10/2020: Vay sếp 1 triệu nữa ",
+            "date":"9/2/2020",
             "cateId":2
         },
         {
             "id":5,
             "title":"Nợ bạn",
-            "content":"T: 2tr ",
-            "date":"9-3-1020",
+            "content":"Thái :2 triệu \n Lệ : 500k \n Tùng : 50k",
+            "date":"9/3/1020",
             "cateId":2
         },
         {
             "id":6,
             "title":"Cho vay",
-            "content":"N: 20tr",
-            "date":"9-2-1020",
+            "content":"+Ngọc: 20tr \n Lương :10 triệu \nThái : 1000 ",
+            "date":"9/7/1020",
             "cateId":2
         },
         {
             "id":7,
             "title":"Tháng 1",
-            "content":"Tạ Thanh Thảo Tạ Thanh Thảo · 10 năm trước Bạn phải sử dụng keydownđể chụp mã ký tự? Bạn đang ở trong một địa ngục của một chuyến đi: quirksmode.org/js/keys.html (gợi ý: sử dụng keypress!! ) Hữu ích 11 ·  Không hữu ích ·  Trả lời 0 Vũ Mỹ Dung Vũ Mỹ Dung · 10 năm trước Trường hợp của nhân vật không quan trọng. Và tôi cần phải chụp lên, xuống, trái, phải, esc, del, backspace cho ít nhất FF và IE; Vì vậy, nhấn phím là ra khỏi câu hỏi. Cảm ơn cho gợi ý mặc dù. :-) Hữu ích 0 ·  Không hữu ích ·  Trả lời 0 Nguyễn Hương Chi Nguyễn Hương Chi · 7 năm trước Để đối phó với vấn đề này, tôi vừa viết một plugin jQuery: github.com/bpeacock/key-to-charCode Nó hơi bị hỏng và bẩn và có thể được tích hợp tốt hơn vào jQuery, nhưng đó là một sự khởi đầu. Hữu ích 0 ·  Không hữu ích ·  Trả lời 0 Lý Đạt Uy Lý Đạt Uy · 1 năm trước Đối với bất kỳ ai đến đây cố gắng giải quyết vấn đề KeyCode nhưng thực sự chỉ muốn xem phím nào được nhấn, hãy xem câu trả lời này . TLDR:document.onkeydown = function(e){ console.log('Key: ' + e.key); } Hữu ích 0 ·  Không hữu ích ·  Trả lời 0",
-            "date":"9-3-1020",
+            "content":"Tiền lương: 2 triệu \n Tiền thưởng : 50k \n Tiền phạt:2tr5",
+            "date":"9-8-1020",
             "cateId":3
         },
         {
             "id":8,
             "title":"Tháng 2",
             "content":"3tr ",
-            "date":"9-3-1020",
+            "date":"9-9-1020",
             "cateId":3
         },
         {
             "id":9,
             "title":"Tháng3",
-            "content":"4tr ",
-            "date":"9-3-1020",
+            "content":"4tr  ",
+
+            "date":"9-10-1020",
             "cateId":3
         },
         {
             "id":10,
             "title":"Tháng 8",
             "content":"1,3tr ",
-            "date":"9-3-1020",
+            "date":"9-11-1020",
             "cateId":4
         },
         {
             "id":11,
             "title":"Tháng 9",
             "content":"1,4 tr",
-            "date":"9-3-1020",
+            "date":"9-12-1020",
             "cateId":4
         },
         {
             "id":12,
             "title":"Tháng 10",
             "content":"2tr ",
-            "date":"9-3-1020",
+            "date":"9-1-1020",
             "cateId":4
         }
     ]

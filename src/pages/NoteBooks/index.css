@@ -55,5 +55,20 @@ ul > li:first-child{
     margin: 0px;
 }
 .item-detail{
-    display: block;
+    display: inline;
+}
+.card-footer button{
+    /* margin: 0 10px 10px 0; */
+    margin-right: 10px;
+    float: left;
+}
+.text-muted {
+    text-align: end
+    ;
+}
+.modal-title {
+    width: 75%;
+}
+.content-item{
+    min-height: 300px;
 }
